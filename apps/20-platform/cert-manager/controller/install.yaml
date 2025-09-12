@@ -1,19 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gateway-nginx-resources
+  name: cert-manager-controller
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: platform-components
   source:
-    repoURL: https://github.com/hogonzalezve/platform-infra.git
-    targetRevision: main
-    path: apps/platform/gateway-api/manifests
+    repoURL: https://charts.jetstack.io
+    chart: cert-manager
+    targetRevision: v1.18.2
+    helm:
+      values: |
+        installCRDs: true
   destination:
     name: in-cluster
-    namespace: infra-networking
+    namespace: cert-manager
   syncPolicy:
     automated:
       prune: true

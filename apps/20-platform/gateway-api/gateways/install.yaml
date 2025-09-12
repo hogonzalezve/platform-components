@@ -1,20 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kratix-controller
+  name: gateway-resource
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   project: platform-components
   source:
     repoURL: https://github.com/hogonzalezve/platform-infra.git
     targetRevision: main
-    path: apps/platform/kratix/kustomize
-    kustomize: {}
+    path: apps/20-platform/gateway-api/gateway/manifests
   destination:
     name: in-cluster
-    namespace: kratix-platform-system
+    namespace: infra-networking
   syncPolicy:
     automated:
       prune: true

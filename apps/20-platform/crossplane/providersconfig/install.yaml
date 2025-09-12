@@ -1,21 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: platform-root
+  name: crossplane-providers-config
   namespace: argocd
   annotations:
-    # Asegura que el AppProject se aplique antes que los hijos al estar en kustomization
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
-  project: default
+  project: platform-components
   source:
     repoURL: https://github.com/hogonzalezve/platform-infra.git
     targetRevision: main
-    path: apps
-    kustomize: {}
+    path: apps/20-platform/crossplane/providersconfig/manifests
   destination:
     name: in-cluster
-    namespace: argocd
+    namespace: crossplane-system
   syncPolicy:
     automated:
       prune: true
@@ -25,3 +23,4 @@ spec:
       - ServerSideApply=true
       - PrunePropagationPolicy=foreground
       - PruneLast=true
+

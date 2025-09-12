@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane-providers
+  name: kratix-controller
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
@@ -10,10 +10,11 @@ spec:
   source:
     repoURL: https://github.com/hogonzalezve/platform-infra.git
     targetRevision: main
-    path: apps/platform/crossplane/crossplane-providers/providers
+    path: apps/20-platform/kratix/controller/manifests
+    kustomize: {}
   destination:
     name: in-cluster
-    namespace: crossplane-system
+    namespace: kratix-platform-system
   syncPolicy:
     automated:
       prune: true
@@ -23,4 +24,3 @@ spec:
       - ServerSideApply=true
       - PrunePropagationPolicy=foreground
       - PruneLast=true
-
