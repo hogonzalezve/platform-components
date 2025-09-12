@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/hogonzalezve/platform-infra.git
     targetRevision: main
-    path: apps/root
+    path: apps
     kustomize: {}
   destination:
     name: in-cluster
