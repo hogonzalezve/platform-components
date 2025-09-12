@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane-providers
+  name: crossplane-compositions
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   project: platform-components
   source:
     repoURL: https://github.com/hogonzalezve/platform-infra.git
     targetRevision: main
-    path: apps/platform/crossplane/crossplane-providers/providers
+    path: apps/platform/crossplane/crossplane-compositions
   destination:
     name: in-cluster
     namespace: crossplane-system
@@ -23,4 +23,3 @@ spec:
       - ServerSideApply=true
       - PrunePropagationPolicy=foreground
       - PruneLast=true
-

@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform-components
+  namespace: argocd
+spec:
+  description: Project for platform foundational components (Crossplane, providers, compositions)
+  sourceRepos:
+    - https://github.com/hogonzalezve/platform-infra.git
+    - https://charts.crossplane.io/stable
+  destinations:
+    - namespace: '*'
+      server: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'

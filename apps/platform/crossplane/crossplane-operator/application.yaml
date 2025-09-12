@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: crossplane-operator
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   project: platform-components
   source:
@@ -10,12 +12,45 @@ spec:
     chart: crossplane
     targetRevision: 2.0.2
     helm:
-      valuesFiles:
-        - values.yaml
+      values: |
+        # Habilita flags experimentales o avanzados
+        args:
+          - --enable-composition-revisions
+          # - --enable-composition-functions
+          # - --enable-composition-webhook-schema-validation
+
+        # Ajusta recursos del pod si lo necesitas
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+
+        # Ejemplos opcionales de tolerations/affinity
+        # tolerations:
+        #   - key: "dedicated"
+        #     operator: "Equal"
+        #     value: "crossplane"
+        #     effect: "NoSchedule"
+        # affinity:
+        #   podAntiAffinity:
+        #     preferredDuringSchedulingIgnoredDuringExecution:
+        #       - weight: 100
+        #         podAffinityTerm:
+        #           labelSelector:
+        #             matchExpressions:
+        #               - key: app
+        #                 operator: In
+        #                 values:
+        #                   - crossplane
+        #           topologyKey: "kubernetes.io/hostname"
   destination:
-    server: https://51EC70937828D58D36BEA4C848D1B47F.sk1.us-east-1.eks.amazonaws.com
+    name: in-cluster
     namespace: crossplane-system
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
