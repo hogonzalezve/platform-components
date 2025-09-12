@@ -11,7 +11,8 @@ spec:
     - https://github.com/nginx/nginx-gateway-fabric.git
     - https://github.com/kubernetes-sigs/gateway-api.git
     - oci://ghcr.io/nginx/charts/nginx-gateway-fabric
-    - https://charts.kratix.io
+    - https://charts.jetstack.io
+    - https://github.com/syntasso/kratix
   destinations:
     - namespace: '*'
       server: '*'
