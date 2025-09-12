@@ -1,0 +1,39 @@
+# Instalar el proveedor de RDS en Crossplane
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-aws-rds
+  namespace: crossplane-system
+spec:
+  package: xpkg.upbound.io/upbound/provider-aws-rds:v2.0.2
+  runtimeConfigRef:
+    apiVersion: pkg.crossplane.io/v1beta1
+    kind: DeploymentRuntimeConfig
+    name: crossplane-provider-aws
+---
+# Instalar el proveedor de S3 en Crossplane
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-aws-s3
+  namespace: crossplane-system
+spec:
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v2.0.2
+  runtimeConfigRef:
+    apiVersion: pkg.crossplane.io/v1beta1
+    kind: DeploymentRuntimeConfig
+    name: crossplane-provider-aws
+  
+---
+# Instalar el proveedor de Lambda en Crossplane
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-aws-lambda
+  namespace: crossplane-system
+spec:
+  package: xpkg.upbound.io/upbound/provider-aws-lambda:v2.0.2
+  runtimeConfigRef:
+    apiVersion: pkg.crossplane.io/v1beta1
+    kind: DeploymentRuntimeConfig
+    name: crossplane-provider-aws

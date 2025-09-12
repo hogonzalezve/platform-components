@@ -1,0 +1,38 @@
+# Habilita flags experimentales o avanzados
+args:
+  - --enable-composition-revisions
+  # - --enable-composition-functions
+  # - --enable-composition-webhook-schema-validation
+
+# # Configura el namespace donde se instalará Crossplane
+# namespace: crossplane-system
+
+# Ajusta recursos del pod si lo necesitas
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+# # Configura tolerancias si usas nodos dedicados
+# tolerations:
+#   - key: "dedicated"
+#     operator: "Equal"
+#     value: "crossplane"
+#     effect: "NoSchedule"
+
+# # Puedes definir affinity si quieres controlar en qué nodos corre
+# affinity:
+#   podAntiAffinity:
+#     preferredDuringSchedulingIgnoredDuringExecution:
+#       - weight: 100
+#         podAffinityTerm:
+#           labelSelector:
+#             matchExpressions:
+#               - key: app
+#                 operator: In
+#                 values:
+#                   - crossplane
+#           topologyKey: "kubernetes.io/hostname"
