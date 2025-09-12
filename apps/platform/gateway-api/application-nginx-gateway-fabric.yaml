@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-gateway
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: platform-components
+  source:
+    repoURL: oci://ghcr.io/nginx/charts/nginx-gateway-fabric
+    chart: nginx-gateway-fabric
+    targetRevision: 2.1.1
+    helm:
+      values: |
+        # Ejemplo: habilitar service type LoadBalancer
+        service:
+          type: LoadBalancer
+  destination:
+    name: in-cluster
+    namespace: nginx-gateway
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true

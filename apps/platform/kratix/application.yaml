@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kratix-controller
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: platform-components
+  source:
+    repoURL: https://charts.kratix.io
+    chart: kratix
+    targetRevision: 0.32.0
+    helm:
+      values: |
+        # Placeholder for Kratix config
+        platform:
+          name: default
+  destination:
+    name: in-cluster
+    namespace: kratix-platform-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true

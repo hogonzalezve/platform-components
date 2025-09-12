@@ -5,3 +5,7 @@ resources:
   - platform/crossplane/crossplane-operator/application.yaml
   - platform/crossplane/crossplane-providers/application.yaml
   # - platform/crossplane/crossplane-compositions/application.yaml
+  - platform/gateway-api/application-gateway-api-crds.yaml
+  - platform/gateway-api/application-nginx-gateway-fabric.yaml
+  - platform/gateway-api/application-gateway-resource.yaml
+  - platform/kratix/application.yaml
