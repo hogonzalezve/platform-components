@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/hogonzalezve/platform-infra.git
     targetRevision: main
-    path: apps/20-platform/gateway-api/gateway/manifests
+    path: apps/20-platform/gateway-api/gateways/manifests
   destination:
     name: in-cluster
     namespace: infra-networking

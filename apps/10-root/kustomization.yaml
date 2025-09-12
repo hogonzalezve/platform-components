@@ -9,6 +9,6 @@ resources:
   - 20-platform/crossplane/providersconfig/install.yaml
   # - 20-platform/crossplane/compositions/install.yaml
   - 20-platform/gateway-api/controller/install.yaml
-  - 20-platform/gateway-api/cdr/install.yaml
-  - 20-platform/gateway-api/gateway/install.yaml
+  - 20-platform/gateway-api/crd/install.yaml
+  - 20-platform/gateway-api/gateways/install.yaml
   - 20-platform/kratix/controller/install.yaml
