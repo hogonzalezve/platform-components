@@ -10,6 +10,7 @@ spec:
   source:
     repoURL: https://github.com/hogonzalezve/platform-infra.git
     targetRevision: main
+    path: apps/20-platform/kratix/controller
     kustomize: {}
   destination:
     name: in-cluster
