@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-root
+  namespace: argocd
+  annotations:
+    # Asegura que el AppProject se aplique antes que los hijos al estar en kustomization
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hogonzalezve/platform-infra.git
+    targetRevision: main
+    path: apps
+    kustomize: {}
+  destination:
+    name: in-cluster
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
