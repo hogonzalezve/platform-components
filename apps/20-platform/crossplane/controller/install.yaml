@@ -11,41 +11,17 @@ spec:
     repoURL: https://charts.crossplane.io/stable
     chart: crossplane
     targetRevision: 2.0.2
-    helm:
-      values: |
-        # Habilita flags experimentales o avanzados
-        args:
-          - --enable-composition-revisions
-          # - --enable-composition-functions
-          # - --enable-composition-webhook-schema-validation
-
-        # Ajusta recursos del pod si lo necesitas
-        resources:
-          limits:
-            cpu: 500m
-            memory: 512Mi
-          requests:
-            cpu: 250m
-            memory: 256Mi
-
-        # Ejemplos opcionales de tolerations/affinity
-        # tolerations:
-        #   - key: "dedicated"
-        #     operator: "Equal"
-        #     value: "crossplane"
-        #     effect: "NoSchedule"
-        # affinity:
-        #   podAntiAffinity:
-        #     preferredDuringSchedulingIgnoredDuringExecution:
-        #       - weight: 100
-        #         podAffinityTerm:
-        #           labelSelector:
-        #             matchExpressions:
-        #               - key: app
-        #                 operator: In
-        #                 values:
-        #                   - crossplane
-        #           topologyKey: "kubernetes.io/hostname"
+    # helm:
+    #   values: |
+    #     args:
+    #       - --enable-composition-revisions
+    #     resources:
+    #       limits:
+    #         cpu: 500m
+    #         memory: 512Mi
+    #       requests:
+    #         cpu: 250m
+    #         memory: 256Mi
   destination:
     name: in-cluster
     namespace: crossplane-system
