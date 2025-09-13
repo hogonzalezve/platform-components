@@ -1,0 +1,15 @@
+apiVersion: platform.kratix.io/v1alpha1
+kind: Destination
+metadata:
+  name: workloads-1
+  labels:
+    environment: dev
+spec:
+  path: dev                            # subcarpeta lógica para este destino
+  stateStoreRef:
+    name: default
+    kind: GitStateStore
+  # opcional:
+  # filepath:
+  #   mode: nestedByMetadata            # por defecto (estructura anidada)
+  # cleanup: none

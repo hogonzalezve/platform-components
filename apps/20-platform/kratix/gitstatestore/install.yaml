@@ -1,0 +1,16 @@
+apiVersion: platform.kratix.io/v1alpha1
+kind: GitStateStore
+metadata:
+  name: default
+spec:
+  branch: main                 # por defecto "main"
+  path: destinations/          # prefijo dentro del repo
+  authMethod: basicAuth        # o "ssh"
+  gitAuthor:                   # opcional (firma de commits)
+    name: kratix
+    email: platform@acme.io
+  secretRef:
+    name: git-writer           # o "git-writer-ssh"
+    namespace: default
+  url: https://github.com/<org>/<repo-work>.git   # si usas basicAuth
+  # url: git@github.com:<org>/<repo-work>.git     # si usas ssh
