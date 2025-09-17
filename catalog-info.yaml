@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: platform-components
+  description: Repositorio con Argo (apps-of-apps) y operadores de plataforma
+  tags: [argo, operators, controllers]
+spec:
+  type: infrastructure
+  lifecycle: production
+  owner: group:platform-team
+  system: platform
