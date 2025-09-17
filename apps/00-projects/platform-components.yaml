@@ -4,7 +4,7 @@ metadata:
   name: platform-components
   namespace: argocd
 spec:
-  description: Project for platform foundational components (Crossplane, providers, compositions)
+  description: Project for platform foundational components (crossplane, providers, compositions, kratix, nginx gateway, cert-manager, etc)
   sourceRepos:
     - https://github.com/hogonzalezve/platform-infra.git
     - https://charts.crossplane.io/stable
