@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
   - 00-root/install.yaml
   - 10-projects/platform-components.yaml
-  - 10-projects/platform-infra.yaml
-  - 10-projects/platform-tenant.yaml
+  - 10-projects/platform-infrastructure.yaml
+  - 10-projects/platform-promises.yaml
   - 20-platform/cert-manager/controller/install.yaml
   - 20-platform/crossplane/controller/install.yaml
   - 20-platform/crossplane/providers/install.yaml
@@ -13,5 +13,5 @@ resources:
   - 20-platform/gateway-api/crd/install.yaml
   - 20-platform/gateway-api/gateways/install.yaml
   - 20-platform/kratix/controller/install.yaml
-  - 30-promises/install.yaml
-  - 40-claims/install.yaml
+  - 30-infrastructure/install.yaml
+  - 40-promises/install.yaml
