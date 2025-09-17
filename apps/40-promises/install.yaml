@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-promises
+  namespace: argocd
+spec:
+  project: platform-promises
+  source:
+    repoURL: https://github.com/hogonzalezve/platform-promises.git
+    targetRevision: main
+    path: 40-promises/manifests
+  destination:
+    server: in-cluster
+    namespace: platform-promises
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

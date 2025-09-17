@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform-infrastructure
+  namespace: argocd
+spec:
+  description: Resources for managing the platform infrastructure (clusters, networking, monitoring, logging, etc)
+  sourceRepos:
+    - https://github.com/hogonzalezve/platform-infrastructure.git
+  destinations:
+    - namespace: '*'
+      server: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'

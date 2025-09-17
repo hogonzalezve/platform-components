@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform-promises
+  namespace: argocd
+spec:
+  description: Promises for platform foundational components (crossplane, providers, compositions, kratix, nginx gateway, cert-manager, etc)
+  sourceRepos:
+    - https://github.com/hogonzalezve/platform-promises.git
+  destinations:
+    - namespace: '*'
+      server: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
